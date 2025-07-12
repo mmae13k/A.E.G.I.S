@@ -1,0 +1,38 @@
+import { Card, CardContent } from "@/components/ui/card"; import { Button } from "@/components/ui/button"; import { useEffect, useState } from "react"; import { Loader2 } from "lucide-react";
+
+export default function Home() { const [loading, setLoading] = useState(true);
+
+useEffect(() => { const timer = setTimeout(() => setLoading(false), 2000); return () => clearTimeout(timer); }, []);
+
+if (loading) { return ( <div className="flex items-center justify-center min-h-screen bg-black text-white"> <Loader2 className="h-10 w-10 animate-spin" /> </div> ); }
+
+return ( <div className="min-h-screen bg-black text-white font-mono"> <header className="p-6 border-b border-gray-800 flex items-center justify-between"> <h1 className="text-2xl font-bold tracking-widest"> A.E.G.I.S. </h1> <span className="text-sm opacity-70">Beyond Containment</span> </header>
+
+<nav className="bg-gray-900 p-4 flex gap-4 border-b border-gray-800">
+    <Button variant="ghost">الكيانات</Button>
+    <Button variant="ghost">الأبحاث</Button>
+    <Button variant="ghost">البروتوكولات</Button>
+    <Button variant="ghost">عن المنظمة</Button>
+    <Button variant="ghost">اتصل بنا</Button>
+  </nav>
+
+  <main className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <Card className="bg-gray-950 border border-gray-800">
+      <CardContent className="p-4">
+        <h2 className="text-xl font-bold mb-2">AEG-001: الطفل العاكس</h2>
+        <p className="text-sm text-gray-400 mb-2">
+          كيان يشبه طفلًا بجلد عاكس للمشاعر والنوايا. يحتجز في جناح زجاجي خاص.
+        </p>
+        <p className="text-xs text-gray-500 mb-2">
+          التصنيف: Evolving — مستوى الخطورة: مرتفع
+        </p>
+        <Button variant="outline" className="text-white border-white">
+          عرض التفاصيل
+        </Button>
+      </CardContent>
+    </Card>
+  </main>
+</div>
+
+); }
+
